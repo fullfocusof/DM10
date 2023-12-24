@@ -23,9 +23,14 @@ enum classificatons
 
 class OrGraphInteraction
 {
+	void DFSCompsPred(int curVert, vector<int>& status, stack<int>& st);
+	void DFSComps(vector<int>& comp, vector<int>& status, int curVert);
+	void Reverse_g();
+
 public:
 
 	vector<vector<bool>> adjacencyM;
+	vector<vector<bool>> ReverseAdjacencyM;
 	int verts, edges;
 
 	OrGraphInteraction();
@@ -36,6 +41,8 @@ public:
 
 	int edgeClass(int first, int second, vector<int>& parents, vector<int>& visited, vector<int>& entryTimes);
 
-	void DFSComps(stack<int> st, vector<int>& comp, vector<bool>& status, int curVert);
 	vector<vector<int>> FindCompsDFS();
+	void PrintComps(vector<vector<int>>& comps);
+
+	vector<int> topSort();
 };

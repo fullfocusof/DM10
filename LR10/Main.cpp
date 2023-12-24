@@ -42,7 +42,9 @@ int main()
 		vector<string> menu =
 		{
 			"Считать граф из файла",
-			"Вывести граф на экран",			
+			"Вывести граф на экран",
+			"Найти сильно связанные компоненты связности графа",
+			"Топологическая сортировка",
 			"Выход"
 		};
 
@@ -113,6 +115,40 @@ int main()
 					break;
 
 					case 2:
+					{
+						system("cls");
+						
+						vector<vector<int>> comps = OGI.FindCompsDFS();
+						OGI.PrintComps(comps);
+
+						OGI.printQuit();
+					}
+					break;
+
+					case 3:
+					{
+						system("cls");
+
+						vector<int> topS;
+						try
+						{
+							topS = OGI.topSort();
+							cout << "Топологическое упорядочивание: ";
+							for (auto el : topS)
+							{
+								cout << el << " ";
+							}
+						}
+						catch (const exception&)
+						{
+							cout << "Топологическая сортировка невозможна, существует ориентированный цикл";
+						}
+					
+						OGI.printQuit();
+					}
+					break;
+
+					case 4:
 					{
 						exitProg = true;
 					}
